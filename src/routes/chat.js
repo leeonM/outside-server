@@ -27,7 +27,17 @@ router.post('/', async (req, res) => {
       chatHistory: formattedPreviousMessages.join('\n'),
     });
 
-    return res.json(result.response);
+    // Format response for the AI SDK
+    res.writeHead(200, {
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache',
+      'Connection': 'keep-alive',
+    });
+
+    // Send the message in the format expected by useChat
+    res.write(`data: ${JSON.stringify(result)}\n\n`);
+    res.write('data: [DONE]\n\n');
+    res.end();
 
   } catch (error) {
     console.error("Internal server error:", error);
