@@ -20,6 +20,7 @@ export async function callChain(question, chatHistory) {
   try {
     console.log('Starting callChain');
     const sanitizedQuestion = question.question.trim().replaceAll("\n", " ");
+    console.log('Sanitized question:', sanitizedQuestion);
     const vectorStore = await getVectorStore(client);
 
     const chain = ConversationalRetrievalQAChain.fromLLM(
@@ -35,15 +36,16 @@ export async function callChain(question, chatHistory) {
       }
     );
 
+    // Execute chain and get direct response
     const result = await chain.invoke({
       question: sanitizedQuestion,
       chat_history: chatHistory || [],
     });
 
-    // Format the response for useChat hook
+
+    // Return the text response from the chain
     return {
-      role: "assistant",
-      content: result.text || result.answer || ''
+      response: result.text
     };
 
   } catch (e) {
