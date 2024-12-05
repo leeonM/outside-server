@@ -22,6 +22,7 @@ export async function callChain(question, chatHistory) {
     const sanitizedQuestion = question.question.trim().replaceAll("\n", " ");
     console.log('Sanitized question:', sanitizedQuestion);
     const vectorStore = await getVectorStore(client);
+    
 
     const chain = ConversationalRetrievalQAChain.fromLLM(
       streamingModel,

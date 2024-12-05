@@ -19,7 +19,7 @@ const client = new Pinecone({
           console.log(`Creating ${indexName}`);
           await client.createIndex({
               name: indexName,
-              dimension: 1536,
+              dimension: 3072,
               metric: 'cosine',
               spec: {
                   serverless: {
