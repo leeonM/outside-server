@@ -10,7 +10,7 @@ export async function embedAndStoreDocs(
   try {
     await createPineconeIndex(client, process.env.PINECONE_INDEX_NAME);
     const embeddings = new OpenAIEmbeddings({
-        model: "text-embedding-3-small",
+        model: "text-embedding-3-large",
     });
     const index = client.Index(process.env.PINECONE_INDEX_NAME);
 
@@ -29,7 +29,7 @@ export async function embedAndStoreDocs(
 export async function getVectorStore(client) {
   try {
     const embeddings = new OpenAIEmbeddings({
-        model: "text-embedding-3-small",
+        model: "text-embedding-3-large",
     });
     const index = client.Index(process.env.PINECONE_INDEX_NAME);
 

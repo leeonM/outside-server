@@ -4,11 +4,11 @@ export const streamingModel = new ChatOpenAI({
     modelName: "gpt-4o",
     streaming: true,
     verbose: true,
-    temperature: 0.5,
+    temperature: 0.3,
 })
 
 export const nonStreamingModel = new ChatOpenAI({
     modelName: "gpt-4o",
     verbose: true,
-    temperature: 0.5,
+    temperature: 0.3,
 })
