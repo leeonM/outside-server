@@ -1,14 +1,14 @@
 import { ChatOpenAI } from "@langchain/openai";
 
 export const streamingModel = new ChatOpenAI({
-    modelName: "gpt-4o",
+    modelName: "gpt-4o-mini",
     streaming: true,
     verbose: true,
-    temperature: 0.3,
+    temperature: 0.4,
 })
 
 export const nonStreamingModel = new ChatOpenAI({
-    modelName: "gpt-4o",
+    modelName: "gpt-4o-mini",
     verbose: true,
-    temperature: 0.3,
+    temperature: 0.4,
 })
